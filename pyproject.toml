@@ -1,0 +1,18 @@
+[tool.poetry]
+name = "dummy"
+version = "0.1.0"
+description = "dummy data creating project for practice"
+authors = ["Kayjace <gapr0317@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.9"
+sqlalchemy = "^2.0.32"
+faker = "^26.2.0"
+pyyaml = "^6.0.2"
+pymysql = "^1.1.1"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
