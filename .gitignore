@@ -1,2 +1,7 @@
-#잡동사니 폴더
-MISC
+# Ignore specific folders
+.vscode/
+MISC/
+mysqlddl/
+
+# Ignore specific file
+oz-coding.session.sql
