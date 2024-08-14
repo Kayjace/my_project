@@ -1,7 +1,7 @@
 import yaml
 import sqlalchemy as db
-from sqlalchemy import create_engine, inspect, text, MetaData  # 데이터 베이스와 연결하기 위한 라이브러리
-from faker import Faker #더미데이터만들기 위해 사용
+from sqlalchemy import create_engine, inspect, text, MetaData
+from faker import Faker
 
 def truncate_table(selected_table, engine):
     conn = engine.connect()
@@ -17,7 +17,6 @@ def select_all_data(selected_table, engine) :
     for i in result :
         print(i)
 
-#각 테이블별 제약 조건을 가져오는 함수
 def get_table_detail(tables, inspector):
     table_detail = {}
 
@@ -33,11 +32,11 @@ def get_table_detail(tables, inspector):
         temp = []
         for column in columns:
             column_name = column['name']
+
             # 유니크 제약 조건 확인
             column['unique'] = column_name in unique_column_names
-            
-            # auto_increment 확인
-            # SQLAlchemy의 Inspector에서 auto_increment는 'extra' 속성에서 확인 가능
+
+            # auto_increment 확인 (MySQL에서 'extra' 속성에서 확인)
             column['autoincrement'] = column.get('extra', '').lower() == 'auto_increment'
 
             temp.append(column)
@@ -48,30 +47,25 @@ def get_table_detail(tables, inspector):
 
 def get_existing_unique_values(table_name, column_name, engine):
     with engine.connect() as conn:
-        query = text(f"SELECT {column_name} FROM {table_name};")  # SQL 쿼리 문자열을 text로 감쌉니다
+        query = text(f"SELECT {column_name} FROM {table_name};")
         result = conn.execute(query)
-        return set(row[0] for row in result)  # 결과를 집합(set)으로 변환하여 반환합니다
+        return set(row[0] for row in result)
 
 # MySQL 자료형별 더미 데이터 생성 함수
 def generate_dummy_data(data_dict, fake, existing_values=None, auto_increment_start=1, auto_increment_counter=None):
     if existing_values is None:
         existing_values = set()
-
-    # auto_increment 값 생성 및 counter 업데이트
-    if data_dict.get('autoincrement'):
-        if auto_increment_counter is None:
-            raise ValueError("auto_increment_counter must be provided for auto_increment columns")
-        value = auto_increment_start + auto_increment_counter[0]
-        auto_increment_counter[0] += 1
-        return value
-
     if data_dict.get('unique'):
         fake = fake.unique
-
     while True:
         try:
-            # 데이터 생성
-            if data_dict['data_type'] == 'VARCHAR':
+            if data_dict.get('autoincrement'):
+                if auto_increment_counter is None:
+                    raise ValueError("auto_increment_counter must be provided for auto_increment columns")
+                value = auto_increment_start + auto_increment_counter[0]
+                auto_increment_counter[0] += 1
+                return value
+            elif data_dict['data_type'] == 'VARCHAR':
                 new_value = fake.pystr(max_chars=data_dict['data_length'])
             elif data_dict['data_type'] == 'CHAR':
                 new_value = fake.pystr(max_chars=data_dict['data_length'])
@@ -120,14 +114,13 @@ def create_dummy_data_list(table_name, dummy_num, table_detail, engine):
         if column.get('unique') and not column.get('autoincrement'):
             existing_unique_values[column['name']] = get_existing_unique_values(table_name, column['name'], engine)
         if column.get('autoincrement'):
-            auto_increment_counters[column['name']] = [0]  # counter를 리스트로 초기화
+            auto_increment_counters[column['name']] = [0]
 
     for _ in range(dummy_num):
         temp = {}
         for row in table_detail[table_name]['details']:
             data_dict = row.copy()
             if data_dict.get('autoincrement'):
-                # Generate auto_increment value
                 auto_increment_start = 1
                 auto_increment_counter = auto_increment_counters.get(data_dict['name'])
                 dummy_data = generate_dummy_data(data_dict, fake, auto_increment_counter=auto_increment_counter, auto_increment_start=auto_increment_start)
@@ -186,16 +179,13 @@ def main():
     DATABASE_NAME = 'airportdb'
     connection_string = f"{BASE_DATABASE_URL}{DATABASE_NAME}"
     
-    # 데이터 베이스와 연결하기
-    engine = create_engine(connection_string, echo=False)
-    # 메타데이터 가져오기
-    metadata = MetaData()
-    # 데이터베이스에서 테이블 정보 반영
-    metadata.reflect(bind=engine)
-    # 데이터베이스 인스펙터 객체 생성
-    inspector = inspect(engine)  # 변경된 부분
 
-    # 테이블 이름 가져오기
+    engine = create_engine(connection_string, echo=False)
+    metadata = MetaData()
+    metadata.reflect(bind=engine)
+    inspector = inspect(engine)
+
+
     tables = inspector.get_table_names()
     table_detail = get_table_detail(tables, inspector)
     table_names = command_data.get('table_names', [])
@@ -206,7 +196,7 @@ def main():
             print(f'{table_name} 테이블은 데이터베이스에 존재하지 않는 테이블 이름입니다.')
             continue
         
-        dummy_num = dummy_nums.get(table_name, 1000)  # default value of 10 if not specified
+        dummy_num = dummy_nums.get(table_name, 1000)  # default value of 1000 if not specified
 
         if command_data['command'] == 'insert':
             print(f'{table_name} 테이블 더미데이터 생성을 시작합니다.')
