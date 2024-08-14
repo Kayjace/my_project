@@ -1,5 +1,4 @@
-import sqlalchemy as db
-from sqlalchemy import create_engine, inspect, text, MetaData
+from sqlalchemy import create_engine, inspect, text
 
 def create_engine_connection(base_url, database_name):
     connection_string = f"{base_url}{database_name}"

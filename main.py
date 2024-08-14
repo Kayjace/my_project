@@ -1,8 +1,6 @@
-import yaml
-import sqlalchemy as db
-from sqlalchemy import inspect
 import logging
-from utils.db_utils import create_engine_connection, get_table_detail, truncate_table, select_all_data
+from utils.db_setup import load_settings, load_connection_config, setup_database
+from utils.db_utils import get_table_detail, truncate_table, select_all_data
 from utils.data_generator import create_dummy_data_list
 from utils.insert_data import insert_dummy_data
 
@@ -18,42 +16,12 @@ logging.basicConfig(
 
 def main():
     try:
-        def load_settings(file_path):
-            try:
-                with open(file_path, 'r') as file:
-                    settings = yaml.safe_load(file)
-                logging.info(f"Loaded settings from {file_path}")
-                return settings
-            except Exception as e:
-                logging.error(f"Failed to load settings from {file_path}: {e}", exc_info=True)
-                raise
-
-        def load_connection_config(file_path):
-            try:
-                with open(file_path, 'r') as file:
-                    settings = yaml.safe_load(file)
-                logging.info(f"Loaded connection config from {file_path}")
-                return settings
-            except Exception as e:
-                logging.error(f"Failed to load connection config from {file_path}: {e}", exc_info=True)
-                raise
-
+        # 설정 파일 로드
         settings = load_settings('config/settings.yaml')
         connection_config = load_connection_config('config/connection.yaml')
 
-        db_config = connection_config['database']
-        BASE_DATABASE_URL = f"{db_config['type']}+{db_config['driver']}://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/"
-        DATABASE_NAME = db_config['database_name']
-        
-        logging.info(f"Connecting to database {DATABASE_NAME} at {BASE_DATABASE_URL}")
-
-        engine = create_engine_connection(BASE_DATABASE_URL, DATABASE_NAME)
-        metadata = db.MetaData()
-        metadata.reflect(bind=engine)
-        inspector = inspect(engine)
-
-        tables = inspector.get_table_names()
-        logging.info(f"Tables in database: {tables}")
+        # 데이터베이스 설정
+        engine, metadata, inspector, tables = setup_database(connection_config)
 
         table_detail = get_table_detail(engine, tables)
         
