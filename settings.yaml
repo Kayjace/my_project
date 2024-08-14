@@ -1,0 +1,32 @@
+command: truncate
+_comment: insert(추가), truncate(삭제후 추가), view(조회), airline IATA값은 두자리이므로 더미데이터 최대 2704개 이하여야 함.
+table_names:
+  - airline
+  - airplane
+  - airplane_type
+  - airport
+  - airport_geo
+  - airport_reachable
+  - booking
+  - employee
+  - flight
+  - flight_log
+  - flightschedule
+  - passenger
+  - passengerdetails
+  - weatherdata
+dummy_nums:
+  airline: 2000
+  airplane: 1000
+  airplane_type: 1000
+  airport: 1000
+  airport_geo: 1000
+  airport_reachable: 1000
+  booking: 1000
+  employee: 1000
+  flight: 1000
+  flight_log: 1000
+  flightschedule: 1000
+  passenger: 1000
+  passengerdetails: 1000
+  weatherdata: 1000
