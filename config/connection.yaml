@@ -1,0 +1,9 @@
+#database_name 이용해서 db 접근.
+database:
+  type: mysql
+  driver: pymysql
+  user: root
+  password: 208300
+  host: localhost
+  port: 3306
+  database_name: airportdb

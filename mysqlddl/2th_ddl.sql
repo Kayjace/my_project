@@ -1,4 +1,4 @@
-use new;
+use oz;
 
 CREATE TABLE customers (
     customer_id INT PRIMARY KEY,

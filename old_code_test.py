@@ -178,6 +178,7 @@ def insert_dummy_data(selected_table, metadata, engine, data):
                     conn.execute(query)
                     insert_num += 1
                 except Exception as e:
+
                     continue
     if insert_num == 0:
         print("제약조건으로 인해 데이터를 더 추가할 수 없습니다.")
@@ -188,29 +189,6 @@ def load_settings(file_path):
     with open(file_path, 'r') as file:
         settings = yaml.safe_load(file)
     return settings
-
-def get_existing_data_count(table_name, engine):
-    with engine.connect() as conn:
-        query = text(f"SELECT COUNT(*) FROM {table_name};")
-        result = conn.execute(query)
-        return result.scalar()
-
-def adjust_dummy_nums(command_data, table_name, dummy_nums, existing_counts, is_truncate):
-    max_count = 20000
-    special_table = 'airline'
-    special_limit_truncate = 2704
-    special_limit_insert = 2704
-
-    if is_truncate:
-        dummy_nums[table_name] = min(dummy_nums.get(table_name, 1000), max_count)
-        if table_name == special_table:
-            dummy_nums[table_name] = min(dummy_nums[table_name], special_limit_truncate)
-    else:
-        current_count = existing_counts.get(table_name, 0)
-        max_additional = max_count - current_count
-        if table_name == special_table:
-            max_additional = min(max_additional, special_limit_insert - current_count)
-        dummy_nums[table_name] = min(dummy_nums.get(table_name, 1000), max_additional)
 
 def main():
     command_data = load_settings('settings.yaml')
@@ -229,29 +207,13 @@ def main():
     table_names = command_data.get('table_names', [])
     dummy_nums = command_data.get('dummy_nums', {})
 
-    # Check if command is 'truncate' or 'insert'
-    command = command_data.get('command', 'insert')  # default to 'insert' if not specified
-
-    # Fetch existing row counts from database for 'insert' command
-    existing_counts = {}
-    if command == 'insert':
-        for table_name in table_names:
-            if table_name in tables:
-                existing_counts[table_name] = get_existing_data_count(table_name, engine)
-
     for table_name in table_names:
         if table_name not in tables:
             print(f'{table_name} 테이블은 데이터베이스에 존재하지 않는 테이블 이름입니다.')
             continue
-
-        # Adjust dummy numbers based on command and special conditions
-        is_truncate = (command == 'truncate')
-        adjust_dummy_nums(command_data, table_name, dummy_nums, existing_counts, is_truncate)
-
-        if is_truncate:
-            truncate_table(table_name, engine)
-
+        
         dummy_num = dummy_nums.get(table_name, 1000)  # 기본값 1000
+        truncate_table(table_name, engine)
         datas = create_dummy_data_list(table_name, dummy_num, table_detail, engine)
         insert_dummy_data(table_name, metadata, engine, datas)
         select_all_data(table_name, engine)
