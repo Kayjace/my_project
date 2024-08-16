@@ -17,7 +17,7 @@ table_names:
   - passengerdetails
   - weatherdata
 dummy_nums:
-  airline: 1000
+  airline: 250
   airplane: 1000
   airplane_type: 1000
   airport: 1000
@@ -28,6 +28,6 @@ dummy_nums:
   flight: 1000
   flight_log: 1000
   flightschedule: 1000
-  passenger: 1000
+  passenger: 2000
   passengerdetails: 1000
   weatherdata: 1000

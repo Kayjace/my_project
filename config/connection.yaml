@@ -6,4 +6,5 @@ database:
   password: 208300
   host: localhost
   port: 3306
+  #databas_name은 아무것도 입력 없을 시 기본값, 사용자 입력이 우선됨.
   database_name: airportdb

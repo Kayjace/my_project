@@ -25,8 +25,8 @@ def main():
 
         table_detail = get_table_detail(engine, tables)
         
-        table_names = settings.get('tables', [])
-        dummy_nums = settings.get('dummy_numbers', {})
+        table_names = settings.get('table_names', [])
+        dummy_nums = settings.get('dummy_nums', {})
 
         for table_name in table_names:
             if table_name not in tables:
