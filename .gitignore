@@ -8,3 +8,7 @@ mysqlddl/
 
 # Ignore specific file
 oz-coding.session.sql
+
+#log files
+application.log
+errors.log

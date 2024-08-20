@@ -1,0 +1,7 @@
+command: truncate
+dummy_nums:
+  passenger: 1000
+  weatherdata: 1000
+table_names:
+- passenger
+- weatherdata

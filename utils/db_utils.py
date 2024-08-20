@@ -42,12 +42,6 @@ def get_table_detail(engine, tables):
 
     return table_detail
 
-def get_existing_unique_values(table_name, column_name, engine):
-    with engine.connect() as conn:
-        query = text(f"SELECT {column_name} FROM {table_name};")
-        result = conn.execute(query)
-        return set(row[0] for row in result)
-
 def truncate_table(selected_table, engine):
     conn = engine.connect()
     conn.execute(text(f"TRUNCATE TABLE {selected_table};"))

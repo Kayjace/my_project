@@ -1,7 +1,6 @@
 # data_generator.py
 import random, string
 from faker import Faker
-from .db_utils import get_existing_unique_values
 
 
 def generate_random_string(length):
