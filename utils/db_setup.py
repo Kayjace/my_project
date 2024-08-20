@@ -31,11 +31,9 @@ def load_connection_config(file_path):
 
 def get_database_names():
     # 사용자로부터 데이터베이스 이름을 입력받음
-    db_names = input("Enter database names (comma separated), or press Enter to use default: ")
+    db_names = input("Enter database names (comma separated) : ")
     if db_names.strip():
         return [db.strip() for db in db_names.split(',')]
-    else:
-        return None  # 기본 설정 파일 사용
 
 def create_or_load_yaml(db_name, tables):
     yaml_filename = f'config/{db_name}.yaml'
