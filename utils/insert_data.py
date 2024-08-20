@@ -23,6 +23,12 @@ logger.addHandler(file_handler)
 def insert_dummy_data(selected_table, metadata, engine, data):
     table = db.Table(selected_table, metadata, autoload=True, autoload_with=engine)
     insert_num = 0
+    
+    if not data:
+        logger.error("No data provided for insertion.")
+        print("삽입할 데이터가 없습니다.")
+        return
+    
     with engine.connect() as conn:
         with conn.begin():
             for d in data:

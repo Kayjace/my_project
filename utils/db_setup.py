@@ -3,42 +3,47 @@ import sqlalchemy as db
 from sqlalchemy import inspect
 import logging
 
-def load_settings(file_path):
+def load_yaml(file_path, log_message):
     """
-    설정 파일을 로드합니다.
+    YAML 파일을 로드합니다.
     """
     try:
         with open(file_path, 'r') as file:
             settings = yaml.safe_load(file)
-        logging.info(f"Loaded settings from {file_path}")
+        logging.info(f"{log_message} from {file_path}")
         return settings
     except Exception as e:
-        logging.error(f"Failed to load settings from {file_path}: {e}", exc_info=True)
+        logging.error(f"Failed to {log_message.lower()} from {file_path}: {e}", exc_info=True)
         raise
 
 def load_connection_config(file_path):
     """
     데이터베이스 연결 설정 파일을 로드합니다.
     """
-    try:
-        with open(file_path, 'r') as file:
-            settings = yaml.safe_load(file)
-        logging.info(f"Loaded connection config from {file_path}")
-        return settings
-    except Exception as e:
-        logging.error(f"Failed to load connection config from {file_path}: {e}", exc_info=True)
-        raise
+    return load_yaml(file_path, "Loaded connection config")
+
+def get_database_names2(default_db_name="default_db"):
+    """
+    사용자로부터 데이터베이스 이름을 입력받습니다. 입력이 없으면 기본 데이터베이스 이름을 사용합니다.
+    """
+    db_names = input("Enter database names (comma separated), or press Enter to use default: ")
+    return [db.strip() for db in db_names.split(',')] if db_names.strip() else [default_db_name]
 
 def get_database_names():
-    # 사용자로부터 데이터베이스 이름을 입력받음
-    db_names = input("Enter database names (comma separated) : ")
-    if db_names.strip():
-        return [db.strip() for db in db_names.split(',')]
+    """
+    사용자로부터 데이터베이스 이름을 입력받습니다.
+    입력이 없으면 빈 리스트를 반환합니다.
+    """
+    db_names = input("Enter database names (comma separated), or press Enter to use default: ")
+    return [db.strip() for db in db_names.split(',') if db.strip()]
+
 
 def create_or_load_yaml(db_name, tables):
+    """
+    새 YAML 파일을 생성하거나 기존 YAML 파일을 로드합니다.
+    """
     yaml_filename = f'config/{db_name}.yaml'
 
-    # 사용자가 새 YAML 파일을 생성할지, 기존 파일을 사용할지 선택하게 함
     create_new = input(f"Do you want to create a new YAML configuration file for {db_name}? (yes/no): ").strip().lower()
     
     if create_new == 'yes':
@@ -48,33 +53,12 @@ def create_or_load_yaml(db_name, tables):
             if command not in {'truncate', 'insert', 'view'}:
                 print("Invalid command. Please enter 'truncate', 'insert', or 'view'.")
 
-        # 사용자에게 테이블 이름을 보여주기 전에 새 YAML 파일을 생성
         print(f"Available tables in {db_name}: {', '.join(tables)}")
 
         table_entries = input("Enter tables and dummy data count in the format 'table1: count, table2: count, ...': ")
         table_entries = [entry.strip() for entry in table_entries.split(',')]
 
-        table_names_list = []
-        dummy_nums = {}
-        for entry in table_entries:
-            if ':' in entry:
-                table_name, dummy_count = entry.split(':', 1)
-                table_name = table_name.strip()
-                dummy_count = int(dummy_count.strip())
-                if table_name in table_names_list:
-                    print(f"Duplicate table name {table_name} found. Skipping.")
-                    continue
-                if table_name in tables:
-                    table_names_list.append(table_name)
-                    dummy_nums[table_name] = dummy_count
-                else:
-                    print(f"Table name {table_name} does not exist in the database. Skipping.")
-
-        yaml_data = {
-            'command': command,                 # command
-            'table_names': table_names_list,  # table_names 위로
-            'dummy_nums': dummy_nums,          # dummy_nums 아래로
-        }
+        yaml_data = create_yaml_data(tables, table_entries, command)
 
         with open(yaml_filename, 'w') as file:
             yaml.dump(yaml_data, file, default_flow_style=False)
@@ -90,51 +74,56 @@ def create_or_load_yaml(db_name, tables):
     else:
         raise ValueError("Invalid input. Please enter 'yes' or 'no'.")
 
-def create_engine_connection2(config, database_name=None):
+def create_yaml_data(tables, table_entries, command):
     """
-    데이터베이스 엔진을 생성합니다.
+    YAML 데이터 구조를 생성합니다.
     """
-    try:
-        db_config = config['database']
-        base_url = f"{db_config['type']}+{db_config['driver']}://{db_config['user']}:{db_config['password']}@{db_config['host']}:{db_config['port']}/"
-        if database_name:
-            connection_string = f"{base_url}{database_name}"
-        else:
-            connection_string = base_url
-        engine = db.create_engine(connection_string)
-        logging.info(f"Created database engine for {database_name if database_name else 'default'}")
-        return engine
-    except Exception as e:
-        logging.error(f"Failed to create database engine: {e}", exc_info=True)
-        raise
+    table_names_list = []
+    dummy_nums = {}
+    for entry in table_entries:
+        if ':' in entry:
+            table_name, dummy_count = entry.split(':', 1)
+            table_name = table_name.strip()
+            try:
+                dummy_count = int(dummy_count.strip())
+            except ValueError:
+                print(f"Invalid dummy count for table {table_name}. Skipping.")
+                continue
+            if table_name in table_names_list:
+                print(f"Duplicate table name {table_name} found. Skipping.")
+                continue
+            if table_name in tables:
+                table_names_list.append(table_name)
+                dummy_nums[table_name] = dummy_count
+            else:
+                print(f"Table name {table_name} does not exist in the database. Skipping.")
+
+    return {
+        'command': command,
+        'table_names': table_names_list,
+        'dummy_nums': dummy_nums,
+    }
 
 def create_engine_connection(connection_config, database_name=None):
     """
     데이터베이스 엔진을 생성합니다.
     """
     try:
-        # 'database' 키에서 설정 읽기
         db_config = connection_config.get('database', {})
-        
-        # 데이터베이스 이름이 주어지면 사용, 없으면 기본 데이터베이스 이름 사용
-        db_name = database_name or db_config.get('database_name', 'default_db')
-        
-        # 필요한 설정 값 추출
         user = db_config.get('user')
         password = db_config.get('password')
         host = db_config.get('host')
         port = db_config.get('port')
 
-        # 필수 설정 값이 모두 있는지 확인
         if not all([user, password, host, port]):
             raise ValueError("Missing required connection parameters.")
-        
-        # 연결 문자열 생성
-        connection_string = (
-            f"mysql+pymysql://{user}:{password}@{host}:{port}/{db_name}"
-        )
-        
-        # 엔진 생성
+
+        # 데이터베이스 이름이 제공된 경우만 추가
+        if database_name:
+            connection_string = f"mysql+pymysql://{user}:{password}@{host}:{port}/{database_name}"
+        else:
+            connection_string = f"mysql+pymysql://{user}:{password}@{host}:{port}/"
+
         engine = db.create_engine(connection_string)
         logging.info(f"Created database engine with connection string: {connection_string}")
         return engine
@@ -142,31 +131,23 @@ def create_engine_connection(connection_config, database_name=None):
         logging.error(f"An error occurred while creating the database engine: {e}", exc_info=True)
         raise
 
-def setup_database2(connection_config, database_name=None):
-    """
-    데이터베이스 엔진과 메타데이터를 설정하고 테이블 정보를 가져옵니다.
-    """
-    engine = create_engine_connection(connection_config, database_name)
-    metadata = db.MetaData()
-    metadata.reflect(bind=engine)
-    inspector = inspect(engine)
-
-    tables = inspector.get_table_names()
-    logging.info(f"Tables in database {database_name if database_name else 'default'}: {tables}")
-
-    return engine, metadata, inspector, tables
-
 def setup_database(connection_config, database_name=None):
     """
     데이터베이스 엔진과 메타데이터를 설정하고 테이블 정보를 가져옵니다.
+    데이터베이스 이름이 없는 경우 메타데이터를 반영하지 않습니다.
     """
     try:
         engine = create_engine_connection(connection_config, database_name)
         metadata = db.MetaData()
-        metadata.reflect(bind=engine)
-        inspector = inspect(engine)
 
-        tables = inspector.get_table_names()
+        # 데이터베이스 이름이 제공된 경우에만 메타데이터를 반영합니다.
+        if database_name:
+            metadata.reflect(bind=engine)
+            inspector = inspect(engine)
+            tables = inspector.get_table_names()
+        else:
+            inspector = None
+            tables = []
 
         return engine, metadata, inspector, tables
     except Exception as e:

@@ -1,9 +1,21 @@
 from sqlalchemy import create_engine, inspect, text
+import os
 
 def create_engine_connection(base_url, database_name):
     connection_string = f"{base_url}{database_name}"
     engine = create_engine(connection_string, echo=False)
     return engine
+    
+def check_yaml_exists(db_names):
+    """
+    DB 이름 리스트를 받아서 해당 DB에 대해 YAML 파일이 존재하는지 확인합니다.
+    """
+    missing_yaml_files = []
+    for db_name in db_names:
+        yaml_filename = f'config/{db_name}.yaml'
+        if not os.path.exists(yaml_filename):
+            missing_yaml_files.append(db_name)
+    return missing_yaml_files
 
 def get_table_detail(engine, tables):
     inspector = inspect(engine)

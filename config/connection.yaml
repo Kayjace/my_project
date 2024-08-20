@@ -1,4 +1,3 @@
-#database_name 이용해서 db 접근.
 database:
   type: mysql
   driver: pymysql
@@ -6,5 +5,7 @@ database:
   password: 208300
   host: localhost
   port: 3306
-  #databas_name은 아무것도 입력 없을 시 기본값, 사용자 입력이 우선됨.
-  default_db: airportdb
+  #사전에 수정할 db들. 각각 yaml파일 미리 설정해야함.
+dbnames:
+  - airportdb
+  - dummydb
