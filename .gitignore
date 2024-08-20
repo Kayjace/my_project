@@ -11,4 +11,4 @@ oz-coding.session.sql
 
 #log files
 application.log
-errors.log
+error.log

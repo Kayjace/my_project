@@ -1,7 +1,7 @@
 command: truncate
 dummy_nums:
-  passenger: 1000
-  weatherdata: 1000
+  airport_geo: 1000
+  booking: 2000
 table_names:
-- passenger
-- weatherdata
+- airport_geo
+- booking

@@ -2,10 +2,9 @@ database:
   type: mysql
   driver: pymysql
   user: root
-  password: 208300
   host: localhost
   port: 3306
-  #사전에 수정할 db들. 각각 yaml파일 미리 설정해야함.
+#직접 DB를 입력하기를 원하지 않을 시, dbnames에 작업을 원하는 DB를 직접 추가할 수 있다.
 dbnames:
   - airportdb
   - dummydb
