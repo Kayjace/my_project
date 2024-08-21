@@ -1,4 +1,5 @@
 import logging
+import os
 from utils.db_setup import (
     load_connection_config, 
     setup_database, 
@@ -137,6 +138,8 @@ def main():
                     logging.error(f"An error occurred while processing table {table_name}: {e}", exc_info=True)
 
             logging.info(f"Database {db_name} processing completed.")
+
+        os.environ.pop('DB_PASSWORD', None)
     except Exception as e:
         logging.error(f"An unexpected error occurred: {e}", exc_info=True)
 
