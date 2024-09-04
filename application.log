@@ -1,0 +1,18 @@
+2024-08-30 18:55:28,390 - ERROR - Failed to loaded connection config from connection.yaml: [Errno 2] No such file or directory: 'connection.yaml'
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 11, in load_yaml
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'connection.yaml'
+2024-08-30 18:55:28,391 - ERROR - An unexpected error occurred: [Errno 2] No such file or directory: 'connection.yaml'
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 84, in main
+    connection_config = load_connection_config('connection.yaml')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 21, in load_connection_config
+    return load_yaml(file_path, "Loaded connection config")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 11, in load_yaml
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'connection.yaml'
