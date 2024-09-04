@@ -1,0 +1,7 @@
+command: truncate
+dummy_nums:
+  airport: 1000
+  passenger: 2000
+table_names:
+- airport
+- passenger

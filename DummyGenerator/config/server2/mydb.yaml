@@ -1,0 +1,5 @@
+command: truncate
+dummy_nums:
+  books: 1000
+table_names:
+- books
