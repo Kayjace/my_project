@@ -1,0 +1,15 @@
+source:
+  host: localhost
+  user: root
+  password: '208300'
+  database: dummydb
+
+target:
+  uri: mongodb://localhost:27017
+  database: your_mongodb_database
+
+tables:
+  - mysql_table: orders
+    mongo_collection: orders
+  - mysql_table: reviews
+    mongo_collection: reviews
