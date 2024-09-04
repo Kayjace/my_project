@@ -1,0 +1,19 @@
+servers:
+  server1:
+    type: mysql
+    driver: pymysql
+    user: root
+    host: localhost
+    port: 3306
+    dbnames:
+      - airportdb
+      - dummydb
+  server2:
+    type: mysql
+    driver: pymysql
+    user: fishbread_user
+    host: localhost
+    port: 3306
+    dbnames:
+      - airbnb
+      - mydb

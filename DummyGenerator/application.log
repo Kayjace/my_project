@@ -1,0 +1,1281 @@
+2024-08-30 18:54:05,499 - ERROR - Failed to loaded connection config from connection.yaml: [Errno 2] No such file or directory: 'connection.yaml'
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 11, in load_yaml
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'connection.yaml'
+2024-08-30 18:54:05,499 - ERROR - An unexpected error occurred: [Errno 2] No such file or directory: 'connection.yaml'
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 84, in main
+    connection_config = load_connection_config('connection.yaml')
+                        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 21, in load_connection_config
+    return load_yaml(file_path, "Loaded connection config")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 11, in load_yaml
+    with open(file_path, 'r') as file:
+         ^^^^^^^^^^^^^^^^^^^^
+FileNotFoundError: [Errno 2] No such file or directory: 'connection.yaml'
+2024-08-30 18:56:53,234 - INFO - Loaded connection config from connection.yaml
+2024-08-30 18:56:57,209 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-08-30 18:57:00,612 - INFO - Processing database: airportdb
+2024-08-30 18:57:00,613 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-08-30 18:57:02,600 - INFO - Processing table airport with 1000 dummy records.
+2024-08-30 18:57:03,068 - INFO - Successfully processed table airport.
+2024-08-30 18:57:03,068 - INFO - Processing table passenger with 2000 dummy records.
+2024-08-30 18:57:03,538 - INFO - Successfully processed table passenger.
+2024-08-30 18:57:03,539 - INFO - Database airportdb processing completed.
+2024-08-30 18:57:03,539 - INFO - Processing database: dummydb
+2024-08-30 18:57:03,542 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/dummydb
+2024-08-30 18:57:04,385 - INFO - Processing table orders with 1000 dummy records.
+2024-08-30 18:57:05,037 - INFO - Successfully processed table orders.
+2024-08-30 18:57:05,037 - INFO - Processing table reviews with 1000 dummy records.
+2024-08-30 18:57:05,691 - INFO - Successfully processed table reviews.
+2024-08-30 18:57:05,691 - INFO - Database dummydb processing completed.
+2024-09-04 14:17:20,071 - INFO - Loaded connection config from connection.yaml
+2024-09-04 14:17:23,096 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 14:17:54,071 - INFO - Processing database: airportdb
+2024-09-04 14:17:54,071 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 14:29:02,694 - ERROR - An unexpected error occurred: 잘못된 입력. 'yes' or 'no' 를 입력해주세요.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 112, in main
+    connection_config_no_db['password'] = password
+                    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 61, in create_or_load_yaml
+    raise ValueError("잘못된 입력. 'yes' or 'no' 를 입력해주세요.")
+ValueError: 잘못된 입력. 'yes' or 'no' 를 입력해주세요.
+2024-09-04 14:29:35,170 - INFO - Loaded connection config from connection.yaml
+2024-09-04 14:29:49,479 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 115, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 14:29:49,480 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 132, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 115, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 14:29:49,480 - ERROR - An unexpected error occurred: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 114, in main
+    setup_database(connection_config_no_db, None)
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 132, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 115, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 14:32:52,175 - INFO - Loaded connection config from connection.yaml
+2024-09-04 14:32:55,631 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 14:33:02,422 - ERROR - An unexpected error occurred: check_yaml_exists() takes 1 positional argument but 2 were given
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 114, in main
+    database_names = get_database_names_from_config(server_config, server_name)
+                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 58, in get_database_names_from_config
+    missing_yaml_files = check_yaml_exists(predefined_db_names, server_name)
+                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: check_yaml_exists() takes 1 positional argument but 2 were given
+2024-09-04 14:39:34,665 - INFO - Loaded connection config from connection.yaml
+2024-09-04 14:39:38,024 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 14:39:41,413 - INFO - Processing database: airportdb
+2024-09-04 14:39:41,413 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 14:39:43,870 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 14:39:44,118 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'jNxP' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'pSO', 'icao': 'jNxP', 'name': 'AHseAavxtzckXnHIOmLsBVSHzONMeoIrNMGHfRxVroEDrrLXbb'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'jNxP' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'jNxP' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'pSO', 'icao': 'jNxP', 'name': 'AHseAavxtzckXnHIOmLsBVSHzONMeoIrNMGHfRxVroEDrrLXbb'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 14:39:44,406 - INFO - Successfully processed table airport.
+2024-09-04 14:39:44,406 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 14:39:44,985 - INFO - Successfully processed table passenger.
+2024-09-04 14:39:44,986 - INFO - Database airportdb processing completed.
+2024-09-04 14:39:44,986 - INFO - Processing database: dummydb
+2024-09-04 14:39:44,987 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/dummydb
+2024-09-04 14:39:56,284 - INFO - Processing table orders with 1000 dummy records.
+2024-09-04 14:39:56,955 - INFO - Successfully processed table orders.
+2024-09-04 14:39:56,955 - INFO - Processing table reviews with 1000 dummy records.
+2024-09-04 14:39:57,591 - INFO - Successfully processed table reviews.
+2024-09-04 14:39:57,591 - INFO - Database dummydb processing completed.
+2024-09-04 14:58:11,564 - INFO - Loaded connection config from connection.yaml
+2024-09-04 14:58:15,333 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 15:00:15,402 - ERROR - An unexpected error occurred: (pymysql.err.ProgrammingError) (1103, "Incorrect table name ''")
+[SQL: SHOW CREATE TABLE ``]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.ProgrammingError: (1103, "Incorrect table name ''")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 195, in main
+    dummy_data = create_dummy_data_list(table, DEFAULT_DUMMY_NUM, get_table_detail(engine, [table]), engine)
+                                                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_utils.py", line 16, in get_table_detail
+    columns = inspector.get_columns(table)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 859, in get_columns
+    col_defs = self.dialect.get_columns(
+               ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in get_columns
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/base.py", line 2966, in get_columns
+    parsed_state = self._parsed_state_or_create(
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/base.py", line 3226, in _parsed_state_or_create
+    return self._setup_parser(
+           ^^^^^^^^^^^^^^^^^^^
+  File "<string>", line 2, in _setup_parser
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 97, in cache
+    ret = fn(self, con, *args, **kw)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/base.py", line 3253, in _setup_parser
+    sql = self._show_create_table(
+          ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/dialects/mysql/base.py", line 3361, in _show_create_table
+    ).exec_driver_sql(st)
+      ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1779, in exec_driver_sql
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.ProgrammingError: (pymysql.err.ProgrammingError) (1103, "Incorrect table name ''")
+[SQL: SHOW CREATE TABLE ``]
+(Background on this error at: https://sqlalche.me/e/20/f405)
+2024-09-04 15:00:18,672 - INFO - Loaded connection config from connection.yaml
+2024-09-04 15:00:21,920 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 15:00:28,878 - INFO - Processing database: airportdb
+2024-09-04 15:00:28,879 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 15:00:35,701 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 15:00:36,098 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'WVht' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'lox', 'icao': 'WVht', 'name': 'MxlXDooscRSHtVUzLLGwOYBmaeHKGxdnSnNMpuIzxehUgfBOKo'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'WVht' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'WVht' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'lox', 'icao': 'WVht', 'name': 'MxlXDooscRSHtVUzLLGwOYBmaeHKGxdnSnNMpuIzxehUgfBOKo'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 15:00:36,133 - INFO - Successfully processed table airport.
+2024-09-04 15:00:36,133 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 15:00:36,782 - INFO - Successfully processed table passenger.
+2024-09-04 15:00:36,782 - INFO - Database airportdb processing completed.
+2024-09-04 15:00:36,782 - INFO - Processing database: dummydb
+2024-09-04 15:00:36,783 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/dummydb
+2024-09-04 15:00:38,484 - INFO - Processing table orders with 1000 dummy records.
+2024-09-04 15:00:39,121 - INFO - Successfully processed table orders.
+2024-09-04 15:00:39,121 - INFO - Processing table reviews with 1000 dummy records.
+2024-09-04 15:00:39,718 - INFO - Successfully processed table reviews.
+2024-09-04 15:00:39,718 - INFO - Database dummydb processing completed.
+2024-09-04 15:01:12,811 - INFO - Loaded connection config from connection.yaml
+2024-09-04 15:01:18,274 - INFO - Created database engine with connection string: mysql+pymysql://fishbread_user:208300@localhost:3306/
+2024-09-04 15:01:38,903 - ERROR - The following databases have no corresponding YAML files: airbnb, mydb
+2024-09-04 15:02:01,954 - INFO - Processing database: airbnb
+2024-09-04 15:02:01,955 - INFO - Created database engine with connection string: mysql+pymysql://fishbread_user:208300@localhost:3306/airbnb
+2024-09-04 15:02:08,265 - ERROR - Failed to create or load YAML configuration for database airbnb.
+2024-09-04 15:02:08,266 - INFO - Processing database: mydb
+2024-09-04 15:02:08,266 - INFO - Created database engine with connection string: mysql+pymysql://fishbread_user:208300@localhost:3306/mydb
+2024-09-04 15:02:26,542 - ERROR - No tables provided in the configuration file for database mydb.
+2024-09-04 15:02:52,416 - INFO - Processing database: mydb
+2024-09-04 15:02:52,417 - INFO - Created database engine with connection string: mysql+pymysql://fishbread_user:208300@localhost:3306/mydb
+2024-09-04 15:03:02,556 - INFO - Processing table books with 1000 dummy records.
+2024-09-04 15:03:02,557 - ERROR - An error occurred while processing table books: (pymysql.err.OperationalError) (1701, 'Cannot truncate a table referenced in a foreign key constraint (`mydb`.`bookauthors`, CONSTRAINT `book_id`)')
+[SQL: TRUNCATE TABLE books;]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1701, 'Cannot truncate a table referenced in a foreign key constraint (`mydb`.`bookauthors`, CONSTRAINT `book_id`)')
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 247, in main
+    process_table(engine, metadata, table_name, table_detail, command)
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 69, in process_table
+    truncate_table(table_name, engine)
+  File "/Users/mac/my_project/DummyGenerator/utils/db_utils.py", line 47, in truncate_table
+    conn.execute(text(f"TRUNCATE TABLE {selected_table};"))
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1701, 'Cannot truncate a table referenced in a foreign key constraint (`mydb`.`bookauthors`, CONSTRAINT `book_id`)')
+[SQL: TRUNCATE TABLE books;]
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-09-04 15:03:02,563 - INFO - Database mydb processing completed.
+2024-09-04 15:11:00,331 - INFO - Loaded connection config from connection.yaml
+2024-09-04 15:11:04,452 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 15:24:10,872 - INFO - Loaded connection config from connection.yaml
+2024-09-04 15:24:18,319 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:24:18,320 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:24:18,321 - ERROR - Failed to connect to the database 208300: Missing required connection parameters.
+2024-09-04 15:38:02,585 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:38:02,586 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:38:02,587 - ERROR - Failed to connect to the database /Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/bin/python /Users/mac/my_project/DummyGenerator/main.py: Missing required connection parameters.
+2024-09-04 15:38:08,661 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:38:08,662 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:38:08,662 - ERROR - Failed to connect to the database server1: Missing required connection parameters.
+2024-09-04 15:49:58,917 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:49:58,919 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:49:58,919 - ERROR - Failed to connect to the database /Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/bin/python "/Users/mac/my_project/DummyGenerator/main copy 3.py": Missing required connection parameters.
+2024-09-04 15:50:03,857 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:50:03,857 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:50:03,858 - ERROR - Failed to connect to the database : Missing required connection parameters.
+2024-09-04 15:50:04,972 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:50:04,972 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 15:50:04,972 - ERROR - Failed to connect to the database x: Missing required connection parameters.
+2024-09-04 16:04:15,724 - INFO - Loaded connection config from connection.yaml
+2024-09-04 16:04:26,637 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:05:12,309 - INFO - Processing database: airportdb
+2024-09-04 16:05:12,310 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 16:05:23,171 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 16:05:23,626 - INFO - Successfully processed table airport.
+2024-09-04 16:05:23,626 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 16:05:24,109 - INFO - Successfully processed table passenger.
+2024-09-04 16:05:24,109 - INFO - Database airportdb processing completed.
+2024-09-04 16:05:26,872 - INFO - Loaded connection config from connection.yaml
+2024-09-04 16:05:30,038 - INFO - Created database engine with connection string: mysql+pymysql://root:airportdb@localhost:3306/
+2024-09-04 16:10:18,708 - INFO - Processing database: /Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/bin/python "/Users/mac/my_project/DummyGenerator/main copy 3.py"
+2024-09-04 16:10:18,709 - INFO - Created database engine with connection string: mysql+pymysql://root:airportdb@localhost:3306//Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/bin/python "/Users/mac/my_project/DummyGenerator/main copy 3.py"
+2024-09-04 16:10:18,732 - ERROR - An error occurred while setting up the database: (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 268, in caching_sha2_password_auth
+    pkt = _roundtrip(conn, data)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 144, in setup_database
+    metadata.reflect(bind=engine)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5759, in reflect
+    with inspection.inspect(bind)._inspection_context() as insp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/inspection.py", line 140, in inspect
+    ret = reg(subject)
+          ^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 303, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 236, in _construct
+    init(self, bind)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 247, in _init_engine
+    engine.connect().close()
+    ^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 268, in caching_sha2_password_auth
+    pkt = _roundtrip(conn, data)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-09-04 16:10:18,744 - ERROR - Skipping database /Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/bin/python "/Users/mac/my_project/DummyGenerator/main copy 3.py" due to setup error: (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 268, in caching_sha2_password_auth
+    pkt = _roundtrip(conn, data)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.OperationalError: (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main copy.py", line 127, in main
+    engine, metadata, _, tables = setup_database(connection_config_no_db, db_name)
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 144, in setup_database
+    metadata.reflect(bind=engine)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/schema.py", line 5759, in reflect
+    with inspection.inspect(bind)._inspection_context() as insp:
+         ^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/inspection.py", line 140, in inspect
+    ret = reg(subject)
+          ^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 303, in _engine_insp
+    return Inspector._construct(Inspector._init_engine, bind)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 236, in _construct
+    init(self, bind)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/reflection.py", line 247, in _init_engine
+    engine.connect().close()
+    ^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3278, in connect
+    return self._connection_cls(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 148, in __init__
+    Connection._handle_dbapi_exception_noconnection(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2442, in _handle_dbapi_exception_noconnection
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 146, in __init__
+    self._dbapi_connection = engine.raw_connection()
+                             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 3302, in raw_connection
+    return self.pool.connect()
+           ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 449, in connect
+    return _ConnectionFairy._checkout(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 1263, in _checkout
+    fairy = _ConnectionRecord.checkout(pool)
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 712, in checkout
+    rec = pool._do_get()
+          ^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 179, in _do_get
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/impl.py", line 177, in _do_get
+    return self._create_connection()
+           ^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 390, in _create_connection
+    return _ConnectionRecord(self)
+           ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 674, in __init__
+    self.__connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 900, in __connect
+    with util.safe_reraise():
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/util/langhelpers.py", line 146, in __exit__
+    raise exc_value.with_traceback(exc_tb)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/pool/base.py", line 896, in __connect
+    self.dbapi_connection = connection = pool._invoke_creator(self)
+                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/create.py", line 643, in connect
+    return dialect.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 621, in connect
+    return self.loaded_dbapi.connect(*cargs, **cparams)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 361, in __init__
+    self.connect()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 669, in connect
+    self._request_authentication()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 979, in _request_authentication
+    auth_packet = _auth.caching_sha2_password_auth(self, auth_packet)
+                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 268, in caching_sha2_password_auth
+    pkt = _roundtrip(conn, data)
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/_auth.py", line 121, in _roundtrip
+    pkt = conn._read_packet()
+          ^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.OperationalError: (pymysql.err.OperationalError) (1045, "Access denied for user 'root'@'localhost' (using password: YES)")
+(Background on this error at: https://sqlalche.me/e/20/e3q8)
+2024-09-04 16:41:43,939 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:41:47,731 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:41:53,187 - ERROR - An unexpected error occurred: cannot access local variable 'db_name' where it is not associated with a value
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 208, in main
+    print(f"Schemas in database {db_name}:", schemas)
+                                 ^^^^^^^
+UnboundLocalError: cannot access local variable 'db_name' where it is not associated with a value
+2024-09-04 16:42:53,702 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:42:57,343 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:43:06,075 - ERROR - An unexpected error occurred: Not an executable object: 'SHOW CREATE TABLE airportdb.airport;'
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1414, in execute
+    meth = statement._execute_on_connection
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute '_execute_on_connection'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 213, in main
+    ddl = get_table_ddl(engine, schema, table)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 115, in get_table_ddl
+    result = conn.execute(ddl_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    raise exc.ObjectNotExecutableError(statement) from err
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: 'SHOW CREATE TABLE airportdb.airport;'
+2024-09-04 16:44:26,013 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:44:28,406 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:44:50,341 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:44:53,920 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:45:03,799 - INFO - Processing database: airportdb
+2024-09-04 16:45:03,800 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 16:45:08,622 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 16:45:08,827 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'kbrz' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'MTI', 'icao': 'kbrz', 'name': 'gDMKUgRYkAzmTiEFqjrMajVLXCAFdKSKnFryMVVKQLlYmThVxD'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'kbrz' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'kbrz' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'MTI', 'icao': 'kbrz', 'name': 'gDMKUgRYkAzmTiEFqjrMajVLXCAFdKSKnFryMVVKQLlYmThVxD'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 16:45:09,062 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'SNgf' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'UKf', 'icao': 'SNgf', 'name': 'moGypIfzzvDKFSNOrBHHUdjfkdirEsgmTXuEgClrVaRibzyqwM'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'SNgf' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'SNgf' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'UKf', 'icao': 'SNgf', 'name': 'moGypIfzzvDKFSNOrBHHUdjfkdirEsgmTXuEgClrVaRibzyqwM'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 16:45:09,097 - INFO - Successfully processed table airport.
+2024-09-04 16:45:09,098 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 16:45:09,547 - INFO - Successfully processed table passenger.
+2024-09-04 16:45:09,547 - INFO - Database airportdb processing completed.
+2024-09-04 16:45:13,205 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:45:15,982 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:45:43,535 - ERROR - An unexpected error occurred: Not an executable object: 'SHOW CREATE TABLE airportdb.airline;'
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1414, in execute
+    meth = statement._execute_on_connection
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AttributeError: 'str' object has no attribute '_execute_on_connection'
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 216, in main
+    ddl = get_table_ddl(engine, schema, table)
+          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/main.py", line 118, in get_table_ddl
+    result = conn.execute(ddl_query)
+             ^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1416, in execute
+    raise exc.ObjectNotExecutableError(statement) from err
+sqlalchemy.exc.ObjectNotExecutableError: Not an executable object: 'SHOW CREATE TABLE airportdb.airline;'
+2024-09-04 16:47:29,966 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:47:33,138 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:55:18,956 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:55:22,987 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:55:28,741 - INFO - Processing database: airportdb
+2024-09-04 16:55:28,742 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 16:55:32,271 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 16:55:32,806 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asFN' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'zmy', 'icao': 'asFN', 'name': 'JirXEfJDvLYeiMnsPVVyDvVOKnupdXKZDsPToWXojtaKZhXchu'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'asFN' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'asFN' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'zmy', 'icao': 'asFN', 'name': 'JirXEfJDvLYeiMnsPVVyDvVOKnupdXKZDsPToWXojtaKZhXchu'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 16:55:32,819 - ERROR - Failed to insert data into airport: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'oPRs' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'Jgw', 'icao': 'oPRs', 'name': 'qcKTigBHKBMZpPgajTLsdqwxdEOwQYKNDdQjcBFVuqSTUiLiif'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+Traceback (most recent call last):
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+pymysql.err.IntegrityError: (1062, "Duplicate entry 'oPRs' for key 'airport.icao_unq'")
+
+The above exception was the direct cause of the following exception:
+
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/insert_data.py", line 37, in insert_dummy_data
+    conn.execute(query)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1418, in execute
+    return meth(
+           ^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/sql/elements.py", line 515, in _execute_on_connection
+    return connection._execute_clauseelement(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1640, in _execute_clauseelement
+    ret = self._execute_context(
+          ^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1846, in _execute_context
+    return self._exec_single_context(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1986, in _exec_single_context
+    self._handle_dbapi_exception(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 2355, in _handle_dbapi_exception
+    raise sqlalchemy_exception.with_traceback(exc_info[2]) from e
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/base.py", line 1967, in _exec_single_context
+    self.dialect.do_execute(
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/sqlalchemy/engine/default.py", line 941, in do_execute
+    cursor.execute(statement, parameters)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 153, in execute
+    result = self._query(query)
+             ^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/cursors.py", line 322, in _query
+    conn.query(q)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 563, in query
+    self._affected_rows = self._read_query_result(unbuffered=unbuffered)
+                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 825, in _read_query_result
+    result.read()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 1199, in read
+    first_packet = self.connection._read_packet()
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/connections.py", line 775, in _read_packet
+    packet.raise_for_error()
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/protocol.py", line 219, in raise_for_error
+    err.raise_mysql_exception(self._data)
+  File "/Users/mac/Library/Caches/pypoetry/virtualenvs/dummy-ueek8zWF-py3.12/lib/python3.12/site-packages/pymysql/err.py", line 150, in raise_mysql_exception
+    raise errorclass(errno, errval)
+sqlalchemy.exc.IntegrityError: (pymysql.err.IntegrityError) (1062, "Duplicate entry 'oPRs' for key 'airport.icao_unq'")
+[SQL: INSERT INTO airport (airport_id, iata, icao, name) VALUES (%(airport_id)s, %(iata)s, %(icao)s, %(name)s)]
+[parameters: {'airport_id': None, 'iata': 'Jgw', 'icao': 'oPRs', 'name': 'qcKTigBHKBMZpPgajTLsdqwxdEOwQYKNDdQjcBFVuqSTUiLiif'}]
+(Background on this error at: https://sqlalche.me/e/20/gkpj)
+2024-09-04 16:55:32,880 - INFO - Successfully processed table airport.
+2024-09-04 16:55:32,880 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 16:55:33,445 - INFO - Successfully processed table passenger.
+2024-09-04 16:55:33,445 - INFO - Database airportdb processing completed.
+2024-09-04 16:55:33,445 - INFO - Processing database: dummydb
+2024-09-04 16:55:33,445 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/dummydb
+2024-09-04 16:55:35,210 - INFO - Processing table orders with 1000 dummy records.
+2024-09-04 16:55:35,904 - INFO - Successfully processed table orders.
+2024-09-04 16:55:35,904 - INFO - Processing table reviews with 1000 dummy records.
+2024-09-04 16:55:36,580 - INFO - Successfully processed table reviews.
+2024-09-04 16:55:36,580 - INFO - Database dummydb processing completed.
+2024-09-04 16:57:06,460 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 16:57:09,777 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
+2024-09-04 16:57:18,107 - INFO - Processing database: airportdb
+2024-09-04 16:57:18,108 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/airportdb
+2024-09-04 16:57:20,244 - INFO - Processing table airport with 1000 dummy records.
+2024-09-04 16:57:20,264 - INFO - Successfully processed table airport.
+2024-09-04 16:57:20,264 - INFO - Processing table passenger with 2000 dummy records.
+2024-09-04 16:57:23,568 - INFO - Successfully processed table passenger.
+2024-09-04 16:57:23,568 - INFO - Database airportdb processing completed.
+2024-09-04 17:04:35,325 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 17:04:40,963 - ERROR - An error occurred while creating the database engine: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 17:04:40,964 - ERROR - An error occurred while setting up the database: Missing required connection parameters.
+Traceback (most recent call last):
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 140, in setup_database
+    engine = create_engine_connection(connection_config, database_name)
+             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/Users/mac/my_project/DummyGenerator/utils/db_setup.py", line 123, in create_engine_connection
+    raise ValueError("Missing required connection parameters.")
+ValueError: Missing required connection parameters.
+2024-09-04 17:04:40,964 - ERROR - Failed to connect to the server server1: Missing required connection parameters.

@@ -1,0 +1,7 @@
+command: truncate
+dummy_nums:
+  orders: 1000
+  reviews: 1000
+table_names:
+- orders
+- reviews
