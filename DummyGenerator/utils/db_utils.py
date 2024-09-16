@@ -55,7 +55,7 @@ def truncate_table(selected_table, engine):
     print(f"{selected_table} 내 데이터들을 삭제했습니다.")
 
 #select all data
-def select_all_data(selected_table, engine):
+def select_paginated_data(selected_table, engine):
     with engine.begin() as conn:
         result = conn.execute(text(f"SELECT * FROM {selected_table};"))
     print(f"{selected_table}의 데이터")

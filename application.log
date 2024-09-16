@@ -1,0 +1,2 @@
+2024-09-04 20:10:14,724 - INFO - Loaded connection config from /Users/mac/my_project/DummyGenerator/connection.yaml
+2024-09-04 20:10:21,951 - INFO - Created database engine with connection string: mysql+pymysql://root:208300@localhost:3306/
